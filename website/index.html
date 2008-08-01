@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      has_many_select
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+    <h1>has_many_select</h1>
+    <div id="version" class="clickable" onclick='document.location = "http://github.com/ozsantana/has_many_select/"; return false'>
+      <p>Get Version</p>
+      <a href="http://github.com/ozsantana/has_many_select/" class="numbers">0.0.1</a>
+    </div>
+    <h2>What</h2>
+    <p>This gem is provides a patch for ActiveRecord 2.1.0 to enable the use of the :primary_key option used in combination with the has_many option.</p>
+    <p>The problem: Legacy systems outside the standard.</p>
+    <p>
+    <pre class='syntax'><span class="ident">class HeaderSale < ActiveRecord::Base</span>
+      <span class="ident">set_table_name("cab_pedido")</span>
+      <span class="ident">set_primary_key("r_e_c_n_o_") # false primary_key, real is cpv_pedido. The field r_e_c_n_o_ is serial.</span>
+      <span class="ident">has_many :justifications,</span>
+        <span class="ident">:foreign_key => 'nr_pedido'</span>
+<span class="ident">end</span></pre>
+    </p>
+    <p><pre class='syntax'><span class="ident">x = HeaderSale.find(:first, :conditions => 'cpv_pedido = 193514')</span>
+  <span class="ident">=> 'SELECT * FROM "cab_pedido_vendas" WHERE (cpv_pedido = 193514) LIMIT 1'</span>
+<span class="ident">x.justifications</span>
+  <span class="ident">=> 'SELECT * FROM "justificativa" WHERE ("justificativa".nr_pedido = 307634)' # ERROR</span>
+<span class="ident">the correct select is:</span>
+  <span class="ident">=> 'SELECT * FROM "justificativa" WHERE ("justificativa".nr_pedido = 193514)'</span>
+    </pre></p>
+
+<h2>Installing</h2>
+<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">sources</span> <span class="ident">-a</span> <span class="ident">http://gems.github.com</span></pre></p>
+<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">has_many_select</span></pre></p>
+
+<h2>The basics</h2>
+<h3>Then you must require the gem in your environment.rb</h3>
+  <p><pre class='syntax'><span class="ident">require 'has_many_select'</span></pre></p>
+<h3>In your model:</h3>
+    <p>
+    <pre class='syntax'><span class="ident">class HeaderSale < ActiveRecord::Base</span>
+      <span class="ident">set_table_name("cab_pedido")</span>
+      <span class="ident">set_primary_key("r_e_c_n_o_") # false primary_key, real is cpv_pedido. The field r_e_c_n_o_ is serial.</span>
+      <span class="ident">has_many :justifications,</span>
+        <span class="ident">:foreign_key => 'nr_pedido', :primary_key => 'cpv_pedido'</span>
+<span class="ident">end</span></pre>
+    </p>
+
+    <p><pre class='syntax'><span class="ident">x = HeaderSale.find(:first, :conditions => 'cpv_pedido = 193514')</span>
+  <span class="ident">=> 'SELECT * FROM "cab_pedido_vendas" WHERE (cpv_pedido = 193514) LIMIT 1'</span>
+<span class="ident">x.justifications</span>
+  <span class="ident">=> 'SELECT * FROM "justificativa" WHERE ("justificativa".nr_pedido = 193514)'</span>
+    </pre></p>
+
+<h2>License</h2>
+<p>This code is free to use under the terms of the <span class="caps">MIT</span> license.</p>
+<h2>Contact</h2>
+<p>Comments are welcome. Send an email to <a href="mailto:oz.santana@gmail.com">Ozéias Sant'ana</a>.</p>
+    <p class="coda">
+      <a href="mailto:oz.santana@gmail.com">Ozéias Sant'ana</a>, 1st August 2008<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
+</html>

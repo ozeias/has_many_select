@@ -1,0 +1,5 @@
+
+    For more information on has_many_select, see http://github.com/ozsantana/has_many_select/
+
+    Then you must require the gem in your environment.rb
+      require 'has_many_select'
