@@ -46,7 +46,7 @@ In your model:
 
   gem sources -a http://gems.github.com
 
-  gem install has_many_select
+  gem install ozsantana-has_many_select
 
 == Author
 
