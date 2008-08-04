@@ -1,3 +1,7 @@
+== 0.0.3 2008-08-04
+
+  * remove quote_value
+
 == 0.0.2 2008-08-04
 
   * Insert with primary_key
