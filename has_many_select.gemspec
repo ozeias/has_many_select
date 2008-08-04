@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email = ["oz.santana@gmail.com"]
 
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "website/index.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "lib/has_many_select.rb", "lib/has_many_select/associations.rb", "lib/has_many_select/has_many_association.rb", "lib/has_many_select/version.rb", "script/console", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_has_many_select.rb", "test/test_helper.rb", "website/index.html", "website/index.txt", "website/javascripts/rounded_corners_lite.inc.js", "website/stylesheets/screen.css", "website/template.html.erb"]
+  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "lib/has_many_select.rb", "lib/has_many_select/associations.rb", "lib/has_many_select/association_proxy.rb", "lib/has_many_select/has_many_association.rb", "lib/has_many_select/version.rb", "script/console", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_has_many_select.rb", "test/test_helper.rb", "website/index.html", "website/index.txt", "website/javascripts/rounded_corners_lite.inc.js", "website/stylesheets/screen.css", "website/template.html.erb"]
 
   s.has_rdoc = true
   s.homepage = %q{http://github.com/ozsantana/has_many_select/}

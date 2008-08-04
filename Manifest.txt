@@ -8,6 +8,7 @@ config/hoe.rb
 config/requirements.rb
 lib/has_many_select.rb
 lib/has_many_select/associations.rb
+lib/has_many_select/association_proxy.rb
 lib/has_many_select/has_many_association.rb
 lib/has_many_select/version.rb
 script/console
